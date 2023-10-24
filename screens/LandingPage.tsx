@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Button,
+  Pressable,
 } from "react-native";
 import React from "react";
 import { NavigationProp } from "@react-navigation/native";
@@ -17,52 +18,60 @@ const LandingPage = ({ navigation }: RouterProps) => {
   return (
     <View style={styles.container}>
       <Image
-        source={require("../assets/icon.png")} //change to ur logo, i dont have file
+        source={require('../assets/LandingLogo.png')}
         style={styles.logo}
       />
       <Text style={styles.text}>
         Remember meaningful events and make meaningful connections.
       </Text>
-      <Button onPress={() => navigation.navigate("Login")} title="Continue" />
+      <Pressable style={styles.button} onPress={() => navigation.navigate("Login")}>
+      <View style={styles.buttonContent}>
+    <Text style={styles.buttonText}>continue</Text>
+    <Image source={require('../assets/LandingPageArrow.png')} style={styles.arrowImage} />
+      </View>
+      </Pressable>
     </View>
   );
 };
 export default LandingPage;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "white",
+    alignItems: 'center', // Aligns content in the center horizontally
+    justifyContent: 'center',
+    backgroundColor: 'white',
   },
   logo: {
-    width: 198, // Adjust the width and height as needed
+    width: 198,
     height: 86,
   },
   text: {
     fontSize: 40,
-    textAlign: "center",
     margin: 20,
-    //fontStyle: 'Urbanist',
+    textAlign: 'left',
     marginVertical: 60,
+    color: 'black',
   },
   button: {
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
     padding: 10,
     borderRadius: 5,
-    flexDirection: "row", // Arrange children in a row
-    alignSelf: "flex-end",
-    marginTop: 50,
+    alignSelf: 'flex-end', // Aligns the button to the right
+  },
+  buttonContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 10,
   },
   buttonText: {
     color: "#0047FF",
     fontSize: 26,
   },
-
   arrowImage: {
     width: 40,
     height: 40,
     marginLeft: 5,
   },
 });
+
